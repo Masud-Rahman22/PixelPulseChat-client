@@ -66,7 +66,7 @@ const Signup = () => {
         setLoading(true);
         if (!name || !email || !password || !confirmPassword) {
             toast({
-                title: "Please Fill all the Feilds",
+                title: "Please Fill all the Fields",
                 status: "warning",
                 duration: 5000,
                 isClosable: true,
@@ -89,14 +89,20 @@ const Signup = () => {
         try {
             const config = {
                 headers: {
-                    "content-type": "application/json"
-                }
-            }
+                    "Content-type": "application/json",
+                },
+            };
             const { data } = await axios.post(
-                "api/user",
-                { name, email, password, pic },
+                "http://localhost:5000/api/user",
+                {
+                    name,
+                    email,
+                    password,
+                    pic,
+                },
                 config
             );
+            console.log(data);
             toast({
                 title: "Registration Successful",
                 status: "success",
